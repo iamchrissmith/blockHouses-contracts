@@ -18,8 +18,8 @@
     "web3": "^0.20.1"
   },
   "devDependencies": {
-    "truffle": "3.2.2",
     "create-html": "^4.0.0",
+    "truffle": "^3.4.9",
     "webpack": "^3.5.6"
   }
 }

@@ -1,9 +1,8 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.11;
 
 import './Stoppable.sol';
 
-contract BlockHouse is Stoppable{
-    
+contract BlockHouse is Stoppable {
   address public titleHolder;
   uint    public price;
   bool    public forSale;

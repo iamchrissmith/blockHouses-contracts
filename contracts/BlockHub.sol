@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.11;
 
 import "./Adminable.sol";
 import "./BlockHouse.sol";
@@ -19,7 +19,7 @@ contract BlockHub is Adminable, Stoppable {
     address titleHolder,
     address house, 
     uint housePrice, 
-    bool forSale,
+    bool forSale
   );
 
         
@@ -35,14 +35,14 @@ contract BlockHub is Adminable, Stoppable {
     return houses.length;
   }
   
-  function newHouse(address _titleHolder, string _name, uint _price, uint _stock)
+  function newHouse(address _titleHolder, uint _price, bool isForSale)
     public
     returns(address HouseContract)
   {
-    House trustedHouse = new House(_titleHolder, _name, _price, _stock);
+    BlockHouse trustedHouse = new BlockHouse(_titleHolder, _price, isForSale);
     houses.push(trustedHouse);
     houseExists[trustedHouse] = true;
-    LogNewHouse(msg.sender, _titleHolder, trustedHouse, _name, _price, _stock);
+    LogNewHouse(msg.sender, _titleHolder, trustedHouse, _price, isForSale);
     return trustedHouse;
   }
 
