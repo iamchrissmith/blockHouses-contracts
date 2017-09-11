@@ -3,6 +3,7 @@ pragma solidity ^0.4.11;
 import './Stoppable.sol';
 
 contract BlockHouse is Stoppable {
+
   address public titleHolder;
   uint    public price;
   bool    public forSale;
@@ -49,9 +50,10 @@ contract BlockHouse is Stoppable {
     require(titleHolder != msg.sender);
     require(price == msg.value);
     
-    balances[titleHolder] += msg.value;
-    
+    forSale = false;
     LogSale(msg.sender, titleHolder, msg.value);
+    balances[titleHolder] += msg.value;
+    titleHolder = msg.sender;
 
     return true;
   }

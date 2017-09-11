@@ -60,7 +60,8 @@ contract Adminable is Owned {
         constant
         returns(bool isIndeed)
     {
-        if(adminsIndex.length == 0) return false;
+        if (adminsIndex.length == 0) 
+            return false;
         
         return (adminsIndex[userStructs[adminAddress].adminIndex] == adminAddress);
     }
