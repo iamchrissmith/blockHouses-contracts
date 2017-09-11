@@ -7,14 +7,18 @@ contract Adminable is Owned {
     struct UserStruct {
         uint adminIndex;
     }
-    
+
     address[] public adminsIndex;
     mapping(address => UserStruct) public userStructs;
-    
+
     event LogNewAdmin(address indexed adminAddress, uint adminIndex);
     event LogRemovedAdmin(address indexed adminAddress);
     event LogUpdatedAdmin(address indexed adminAddress, uint adminIndex);
-    
+
+    function Adminable() {
+        addAdmin(msg.sender);
+    }
+
     function addAdmin(address newAddress)
         public
         onlyOwner

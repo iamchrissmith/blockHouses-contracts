@@ -35,6 +35,6 @@ contract('Owned', (accounts) => {
     const newOwner = accounts[1];
     return expectedExceptionPromise( () => {
       return owned.changeOwner(newOwner, {from: newOwner});
-    });
+    }, 3000000);
   });
 });
