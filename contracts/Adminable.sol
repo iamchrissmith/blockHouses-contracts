@@ -1,8 +1,8 @@
 pragma solidity ^0.4.11;
 
-import './Owned.sol';
+import './Stoppable.sol';
 
-contract Adminable is Owned {
+contract Adminable is Stoppable {
 
     struct UserStruct {
         uint adminIndex;
@@ -14,10 +14,6 @@ contract Adminable is Owned {
     event LogNewAdmin(address indexed adminAddress, uint adminIndex);
     event LogRemovedAdmin(address indexed adminAddress);
     event LogUpdatedAdmin(address indexed adminAddress, uint adminIndex);
-
-    function Adminable() {
-        addAdmin(msg.sender);
-    }
 
     function addAdmin(address newAddress)
         public

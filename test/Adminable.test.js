@@ -12,13 +12,7 @@ contract('Adminable', (accounts) => {
     return Adminable.new({from:owner})
       .then( instance => {
         adminable = instance;
-      });
-  });
-
-  it('the owner should be an administrator', () => {
-    return adminable.isAdmin(owner, {from: owner})
-      .then( isAdmin => {
-        assert.isTrue(isAdmin, "The owner is not an admin by default");
+        return adminable.addAdmin(owner, {from:owner});
       });
   });
   

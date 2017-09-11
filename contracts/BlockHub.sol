@@ -3,7 +3,7 @@ pragma solidity ^0.4.11;
 import "./Adminable.sol";
 import "./BlockHouse.sol";
 
-contract BlockHub is Adminable, Stoppable {
+contract BlockHub is Adminable {
   
   address[] public houses;
   
@@ -22,7 +22,6 @@ contract BlockHub is Adminable, Stoppable {
     bool forSale
   );
 
-        
   function BlockHub() {
     addAdmin(msg.sender);
   }
@@ -37,13 +36,14 @@ contract BlockHub is Adminable, Stoppable {
   
   function newHouse(address _titleHolder, uint _price, bool isForSale)
     public
-    returns(address HouseContract)
+    returns(address houseAddress)
   {
+    require(isAdmin(msg.sender));
+
     BlockHouse trustedHouse = new BlockHouse(_titleHolder, _price, isForSale);
     houses.push(trustedHouse);
     houseExists[trustedHouse] = true;
     LogNewHouse(msg.sender, _titleHolder, trustedHouse, _price, isForSale);
     return trustedHouse;
   }
-
 }
