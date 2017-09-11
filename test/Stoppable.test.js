@@ -32,7 +32,7 @@ contract('Stoppable', (accounts) => {
 
   it('Non-Owner should not be able to stop the contract', () => {
     return expectedExceptionPromise( () => {
-      return stoppable.runSwitch(false, {from:accounts[1]})
-    }, 3000000);
+      return stoppable.runSwitch(true, {from:accounts[1]});
+    });
   });
 });
