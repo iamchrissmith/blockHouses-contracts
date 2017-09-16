@@ -74,6 +74,7 @@ contract BlockHouse is Stoppable {
   function withdrawFunds()
     public
     onlyIfRunning
+    // only if not owner?
     returns(bool success)
   {
     require(balances[msg.sender] > 0);
